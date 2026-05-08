@@ -2,35 +2,41 @@ import React from "react";
 import { cn } from "../../lib/utils";
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "lime" | "pink" | "yellow" | "cyan" | "white";
+  variant?: "default" | "elevated" | "glass";
   padding?: "none" | "sm" | "md" | "lg";
+  hover?: boolean;
   children?: React.ReactNode;
   className?: string;
 }
 
-export function Card({ className, variant = "default", padding = "md", children, ...props }: CardProps) {
+export function Card({
+  className,
+  variant = "default",
+  padding = "md",
+  hover = false,
+  children,
+  ...props
+}: CardProps) {
   const variants = {
-    default: "bg-neo-bg-alt",
-    white: "bg-white",
-    lime: "bg-neo-lime",
-    pink: "bg-neo-pink text-white",
-    yellow: "bg-neo-yellow",
-    cyan: "bg-neo-cyan",
+    default: "bg-bg-card border border-border",
+    elevated: "bg-bg-elevated border border-border",
+    glass: "glass border border-white/10",
   };
 
   const paddings = {
     none: "p-0",
     sm: "p-4",
-    md: "p-8",
-    lg: "p-12",
+    md: "p-6",
+    lg: "p-8",
   };
 
   return (
     <div
       className={cn(
-        "neo-border neo-shadow overflow-hidden",
+        "rounded-xl transition-all duration-200",
         variants[variant],
         paddings[padding],
+        hover && "hover:border-border-hover hover:shadow-lg hover:shadow-accent/5 cursor-pointer",
         className
       )}
       {...props}
