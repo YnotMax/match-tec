@@ -20,7 +20,6 @@ d:\estudos\Hackathon match tech\
 ├── firebase-applet-config.json   # Config do Firebase (chaves reais)
 ├── firebase-blueprint.json       # Blueprint do projeto Firebase
 ├── firestore.rules               # Regras de segurança do Firestore
-├── hackathon_tech_floripa_2026_strategy.md  # [PESSOAL] Estratégia competitiva do Tony
 ├── index.html                    # Entry point HTML (Vite)
 ├── metadata.json
 ├── package.json                  # Dependencies e scripts
@@ -28,6 +27,12 @@ d:\estudos\Hackathon match tech\
 ├── tsconfig.json
 ├── vercel.json                   # Config de deploy Vercel
 ├── vite.config.ts                # Vite + Tailwind v4 + PWA
+├── docs/                         # Documentação do projeto
+│   ├── CODEBASE_MAP.md
+│   ├── FRONTEND_BLUEPRINT.md
+│   ├── TODO_MATCH_TECH.md
+│   ├── VISION_MATCH_TECH.md
+│   └── hackathon_tech_floripa_2026_strategy.md
 │
 ├── public/                       # Assets estáticos
 │
@@ -70,10 +75,7 @@ d:\estudos\Hackathon match tech\
 │       └── timer.test.ts         # Vitest tests [REMOVER]
 │
 ├── README.md                     # Documentação pública (setup, stack, features)
-├── VISION_MATCH_TECH.md          # Visão do produto (Estrela Norte)
-├── FRONTEND_BLUEPRINT.md         # Blueprint técnico de implementação
-├── TODO_MATCH_TECH.md            # Roadmap & checklist de progresso
-└── CODEBASE_MAP.md               # Este arquivo (GPS do código)
+└── docs/                         # Pasta com toda a documentação técnica
 ```
 
 ---

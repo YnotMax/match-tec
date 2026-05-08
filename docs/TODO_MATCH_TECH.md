@@ -13,11 +13,11 @@
 ---
 
 ## FASE 0: 📚 Documentação Estratégica
-- [x] Criar `VISION_MATCH_TECH.md` — Visão do produto, identidade visual, arquitetura.
-- [x] Criar `FRONTEND_BLUEPRINT.md` — Blueprint técnico de implementação.
-- [x] Criar `TODO_MATCH_TECH.md` — Este roadmap.
-- [x] Criar `CODEBASE_MAP.md` — Mapa do código existente.
-- [x] Revisar com o Tony — **corrigido**: MDs agora documentam Neo-Brutalismo real (não dark SaaS).
+- [x] Criar `docs/VISION_MATCH_TECH.md` — Visão do produto, identidade visual, arquitetura.
+- [x] Criar `docs/FRONTEND_BLUEPRINT.md` — Blueprint técnico de implementação.
+- [x] Criar `docs/TODO_MATCH_TECH.md` — Este roadmap.
+- [x] Criar `docs/CODEBASE_MAP.md` — Mapa do código existente.
+- [x] Revisado com o Tony — MDs v2 documentam Neo-Brutalismo real. Encoding corrigido.
 
 ---
 
@@ -51,45 +51,44 @@
   - [ ] Variante `compact` para uso em listas de Squad.
 
 ### 1.2 Páginas Novas (estilo Neo-Brutalista)
-- [ ] **`src/pages/Landing.tsx`** — Criar.
-  - [ ] Hero com headline gigante (font-heading) + CTA accent-lime.
-  - [ ] Seção "Como Funciona" (3 Cards: lime, yellow, pink).
-  - [ ] Seção "Perfis Ativos" (grid de cards mini).
-  - [ ] Footer.
+- [x] **`src/pages/Landing.tsx`** — Criada.
+  - [x] Hero com headline gigante + partículas Neo-Brutalistas (reaproveitadas do Bunker).
+  - [x] Seção "Como Funciona" (3 Cards: lime, yellow, pink).
+  - [x] CTA final em fundo preto.
+  - [x] Footer com branding MATCH_TECH.
 
 - [ ] **`src/pages/Discover.tsx`** — Criar (baseado na Guilda).
   - [ ] Copiar lógica de fetch do Guilda.tsx (onSnapshot, real-time).
-  - [ ] Remover filtro por guildId — buscar todos os perfis.
   - [ ] Adicionar barra de filtros (nome, role, status).
   - [ ] Grid responsivo de ProfileCards.
   - [ ] Estado vazio: CTA para criar perfil.
 
 ### 1.3 Páginas Existentes (Ajustes mínimos)
-- [ ] **`src/pages/Onboarding.tsx`** — Ajustar.
+- [ ] **`src/pages/Onboarding.tsx`** — Ajustar textos militaristas.
   - [ ] **NÃO TOCAR no visual ou lógica de state/validação.**
   - [ ] Remover `guildId: 'TECH_FLORIPA_2026'` hardcoded → usar `eventId` dinâmico.
   - [ ] Ajustar `setDoc` para collection `profiles` (em vez de `members`).
 
 ### 1.4 Layout e Navegação
-- [ ] **`src/layouts/RootLayout.tsx`** — Atualizar links.
-  - [ ] **MANTER** todo o estilo visual Neo-Brutalista.
-  - [ ] Atualizar links: Discover, Squad, Meu Perfil.
-  - [ ] Remover links para Bunker, Logística.
+- [x] **`src/layouts/RootLayout.tsx`** — Atualizado.
+  - [x] Logo: MATCH_TECH com ícone Zap.
+  - [x] Links: ONBOARDING + A GUILDA.
+  - [x] Removido: Bunker, Oráculo, Logística.
 
 ### 1.5 Roteamento
-- [ ] **`src/App.tsx`** — Atualizar rotas.
-  - [ ] `/` → Landing.tsx
-  - [ ] `/onboarding` → Onboarding.tsx (ajustado)
-  - [ ] `/discover` → Discover.tsx
-  - [ ] `/profile/:id` → Profile.tsx (Fase 2)
-  - [ ] `/squad` → Squad.tsx (Fase 2)
-  - [ ] Remover: `/guilda`, `/oraculo`, `/logistica`
+- [x] **`src/App.tsx`** — Rotas atualizadas.
+  - [x] `/` → Landing.tsx
+  - [x] `/onboarding` → Onboarding.tsx
+  - [x] `/guilda` → Guilda.tsx (aberta para todos)
+  - [x] Removido: Bunker, Oráculo, Logística
 
 ### 1.6 Limpeza
-- [ ] Remover `src/pages/Bunker.tsx`
-- [ ] Remover `src/pages/Logistica.tsx`
-- [ ] Remover `src/components/ui/PostModal.tsx`
-- [ ] Remover `src/utils/timer.ts` e `src/utils/timer.test.ts`
+- [x] Removido `src/pages/Bunker.tsx`
+- [x] Removido `src/pages/Logistica.tsx`
+- [x] Removido `src/pages/Oraculo.tsx`
+- [x] Removido `src/components/ui/PostModal.tsx`
+- [x] Removido `src/utils/timer.ts` e `src/utils/timer.test.ts`
+- [x] Guilda: removido filtro `guildId` → agora lista TODOS os perfis
 
 ---
 
@@ -174,7 +173,8 @@
 |------|----------------|---------------|
 | 07/05/2026 | Clonado repo, criados MDs de referência (v1 — ERRADA, dark SaaS). | Corrigir MDs. |
 | 07/05/2026 | Outro chat tentou Fase 1 com visual dark. Tony reverteu. | Reescrever MDs. |
-| 07/05/2026 | MDs reescritos (v2) — agora documentam Neo-Brutalismo real. Revert comitado. | Iniciar Fase 1 real. |
+| 07/05/2026 | MDs reescritos (v2) — Neo-Brutalismo real. Novo repo `match-tec` no GitHub criado. | Iniciar Fase 1. |
+| 07/05/2026 | **FASE 1 CONCLUÍDA:** Landing Page, novo navbar MATCH_TECH, remoção de 6 arquivos obsoletos, Guilda aberta para todos. | Onboarding (ajuste textos) + Fase 2. |
 
 ---
 

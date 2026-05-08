@@ -336,7 +336,7 @@ interface Squad {
 
 - Detalhes de implementação de código (veja `FRONTEND_BLUEPRINT.md`).
 - Roadmap detalhado com checklist (veja `TODO_MATCH_TECH.md`).
-- Regras de Firestore atualizadas (veja `firestore.rules`).
+- Regras de Firestore atualizadas (veja `../firestore.rules`).
 - Estratégia pessoal do Tony para o hackathon (veja `hackathon_tech_floripa_2026_strategy.md`).
 
 ---

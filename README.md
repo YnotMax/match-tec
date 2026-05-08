@@ -114,10 +114,10 @@ O app estará rodando em `http://localhost:3000`.
 
 | Documento | Propósito |
 |-----------|-----------|
-| `VISION_MATCH_TECH.md` | Visão do produto, identidade visual, arquitetura, modelo de dados |
-| `FRONTEND_BLUEPRINT.md` | Blueprint técnico de implementação (o que manter, modificar, criar) |
-| `TODO_MATCH_TECH.md` | Roadmap com checklist de progresso |
-| `CODEBASE_MAP.md` | Mapa rápido de toda a codebase (arquivos, dependências, funções-chave) |
+| `docs/VISION_MATCH_TECH.md` | Visão do produto, identidade visual, arquitetura, modelo de dados |
+| `docs/FRONTEND_BLUEPRINT.md` | Blueprint técnico de implementação (o que manter, modificar, criar) |
+| `docs/TODO_MATCH_TECH.md` | Roadmap com checklist de progresso |
+| `docs/CODEBASE_MAP.md` | Mapa rápido de toda a codebase (arquivos, dependências, funções-chave) |
 
 ---
 
