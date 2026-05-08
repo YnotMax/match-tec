@@ -5,7 +5,7 @@ import { Button } from "../components/ui/Button";
 import { FileWarning, Skull, Terminal, Zap, Github, Linkedin } from "lucide-react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import { db } from "../lib/firebase";
-import { collection, onSnapshot, query, where, updateDoc, doc } from "firebase/firestore";
+import { collection, onSnapshot, query, updateDoc, doc } from "firebase/firestore";
 import { useAuth } from "../contexts/AuthContext";
 
 const Avatar = ({ member, getGithubUrl, currentUser }: { member: any, getGithubUrl: (v: string) => string, currentUser: any }) => {
@@ -60,7 +60,7 @@ export default function Guilda() {
   useEffect(() => {
     if (!user) return; // Note we only fetch if logged in
 
-    const q = query(collection(db, "members"), where("guildId", "==", "TECH_FLORIPA_2026"));
+    const q = query(collection(db, "members"));
     const unsub = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       
