@@ -35,7 +35,7 @@ async function startServer() {
       }
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-1.5-flash",
         contents: `Analise este membro. DADOS DO MEMBRO: \n${JSON.stringify(memberData, null, 2)}`,
         config: {
           systemInstruction
@@ -65,7 +65,7 @@ async function startServer() {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       
       const response = await ai.models.generateContent({ 
-        model: "gemini-2.5-flash",
+        model: "gemini-1.5-flash",
         contents: `Contexto do Hackathon Tech Floripa:\n${challengeDesc}\n\nMembros da Equipe:\n${JSON.stringify(members, null, 2)}`,
         config: { 
           responseMimeType: "application/json",
