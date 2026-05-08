@@ -1,32 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Compass, Users, Menu, X, LogOut, User as UserIcon, ChevronDown } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { Terminal, User as UserIcon, Menu, X } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function RootLayout() {
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const profileRef = useRef<HTMLDivElement>(null);
 
-  // Close menus on route change
+  // Close menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setIsProfileOpen(false);
   }, [location.pathname]);
 
-  // Close profile dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
-        setIsProfileOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const links = [
+    { name: "O BUNKER", path: "/" },
+    { name: "ONBOARDING", path: "/onboarding" },
+    { name: "A GUILDA", path: "/guilda" },
+    { name: "ORÁCULO", path: "/oraculo" },
+    { name: "LOGÍSTICA", path: "/logistica" },
+  ];
 
   const getHighResPhotoUrl = (url: string | null) => {
     if (!url) return null;
@@ -37,142 +30,84 @@ export default function RootLayout() {
     return url;
   };
 
-  const navLinks = [
-    { name: "Discover", path: "/discover", icon: Compass },
-    { name: "Squad", path: "/squad", icon: Users },
-  ];
-
-  const handleSignOut = async () => {
-    await signOut();
-    navigate("/");
-  };
-
   return (
-    <div className="min-h-screen bg-bg text-text-primary font-sans relative">
-      {/* Top Navigation */}
-      <nav id="main-nav" className="sticky top-0 z-40 border-b border-border glass">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <NavLink to="/" className="flex items-center gap-2 group">
-              <span className="text-xl font-bold tracking-tight text-text-primary group-hover:text-accent transition-colors duration-200">
-                Match Tech
-              </span>
-            </NavLink>
-
-            {/* Desktop Nav Links */}
-            {user && (
-              <div className="hidden md:flex items-center gap-1">
-                {navLinks.map((link) => {
-                  const isActive = location.pathname === link.path;
-                  const Icon = link.icon;
-                  return (
-                    <NavLink
-                      key={link.path}
-                      to={link.path}
-                      className={`
-                        flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                        ${isActive
-                            ? 'text-accent bg-accent/10'
-                            : 'text-text-secondary hover:text-text-primary hover:bg-bg-elevated'}
-                      `}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {link.name}
-                    </NavLink>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* Right Side */}
+    <div className="min-h-screen bg-neo-bg text-neo-black selection:bg-neo-lime selection:text-neo-black font-sans relative">
+      <nav id="main-nav" className="border-b-[4px] border-neo-black bg-white sticky top-0 z-[40]">
+        <div className="max-w-7xl mx-auto p-4 px-6">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              {user ? (
-                <>
-                  {/* Profile Dropdown */}
-                  <div className="relative" ref={profileRef}>
-                    <button
-                      onClick={() => setIsProfileOpen(!isProfileOpen)}
-                      className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-bg-elevated transition-colors duration-200"
-                    >
-                      <div className="w-8 h-8 rounded-full border border-border overflow-hidden bg-bg-elevated flex items-center justify-center">
-                        {user.photoURL ? (
-                          <img
-                            src={getHighResPhotoUrl(user.photoURL) || ""}
-                            alt={user.displayName || "User"}
-                            className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
-                          />
-                        ) : (
-                          <UserIcon className="w-4 h-4 text-text-muted" />
-                        )}
-                      </div>
-                      <ChevronDown className={`w-3.5 h-3.5 text-text-muted transition-transform duration-200 hidden sm:block ${isProfileOpen ? 'rotate-180' : ''}`} />
-                    </button>
-
-                    {/* Dropdown Menu */}
-                    {isProfileOpen && (
-                      <div className="absolute right-0 mt-2 w-56 rounded-xl border border-border bg-bg-card shadow-xl shadow-black/30 py-1 animate-in fade-in slide-in-from-top-2">
-                        <div className="px-4 py-3 border-b border-border">
-                          <p className="text-sm font-medium text-text-primary truncate">{user.displayName}</p>
-                          <p className="text-xs text-text-muted truncate">{user.email}</p>
-                        </div>
-                        <NavLink
-                          to="/onboarding"
-                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors"
-                        >
-                          <UserIcon className="w-4 h-4" />
-                          Meu Perfil
-                        </NavLink>
-                        <button
-                          onClick={handleSignOut}
-                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-danger hover:bg-danger/10 w-full text-left transition-colors"
-                        >
-                          <LogOut className="w-4 h-4" />
-                          Sair
-                        </button>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Mobile Hamburger */}
-                  <button
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="md:hidden p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors"
-                    aria-label="Toggle menu"
-                  >
-                    {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                  </button>
-                </>
-              ) : (
-                <NavLink
-                  to="/onboarding"
-                  className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-accent text-white hover:bg-accent-hover transition-colors duration-200 shadow-sm shadow-accent/20"
-                >
-                  Criar Perfil
-                </NavLink>
-              )}
+               <div className="bg-neo-black p-2"><Terminal className="text-neo-lime w-6 h-6" /></div>
+               <span className="font-heading font-black text-2xl uppercase tracking-tighter">CMD_BUNKER</span>
             </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && user && (
-            <div className="md:hidden pb-4 pt-2 flex flex-col gap-1 border-t border-border mt-2 animate-in fade-in slide-in-from-top-2">
-              {navLinks.map((link) => {
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex flex-wrap items-center justify-center gap-2 md:gap-4">
+              {links.map((link) => {
                 const isActive = location.pathname === link.path;
-                const Icon = link.icon;
                 return (
                   <NavLink
                     key={link.path}
                     to={link.path}
                     className={`
-                      flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200
-                      ${isActive
-                          ? 'text-accent bg-accent/10'
-                          : 'text-text-secondary hover:text-text-primary hover:bg-bg-elevated'}
+                      px-4 py-2 font-heading font-bold uppercase transition-transform hover:-translate-y-1 hover:shadow-[4px_4px_0_0_#000] border-[3px] border-transparent
+                      ${isActive 
+                          ? 'bg-neo-lime text-neo-black border-[3px] !border-neo-black shadow-[4px_4px_0_0_#000] translate-y-0' 
+                          : 'bg-neo-bg text-neo-black'}
                     `}
                   >
-                    <Icon className="w-5 h-5" />
+                    {link.name}
+                  </NavLink>
+                );
+              })}
+              
+              {user && (
+                <div className="ml-2 flex items-center justify-center w-10 h-10 rounded-full neo-border border-2 bg-white overflow-hidden shadow-[2px_2px_0_0_#000]">
+                  {user.photoURL ? (
+                    <img src={getHighResPhotoUrl(user.photoURL) || ""} alt={user.displayName || "User"} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  ) : (
+                    <UserIcon className="w-6 h-6 text-neo-black" />
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Actions */}
+            <div className="flex md:hidden items-center gap-3">
+              {user && (
+                <div className="flex items-center justify-center w-10 h-10 rounded-full neo-border border-2 bg-white overflow-hidden shadow-[2px_2px_0_0_#000]">
+                  {user.photoURL ? (
+                    <img src={getHighResPhotoUrl(user.photoURL) || ""} alt={user.displayName || "User"} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  ) : (
+                    <UserIcon className="w-5 h-5 text-neo-black" />
+                  )}
+                </div>
+              )}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 border-[3px] border-neo-black bg-neo-lime text-neo-black shadow-[4px_4px_0_0_#000] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu Expansion */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-6 pb-2 flex flex-col gap-3 animate-in fade-in slide-in-from-top-2 relative z-50">
+              {links.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <NavLink
+                    key={link.path}
+                    to={link.path}
+                    className={`
+                      px-4 py-3 font-heading font-bold text-lg uppercase text-center border-[3px] transition-transform active:translate-y-1 active:translate-x-1
+                      ${isActive 
+                          ? 'bg-neo-lime text-neo-black border-neo-black shadow-[4px_4px_0_0_#000] active:shadow-none' 
+                          : 'bg-neo-bg text-neo-black border-transparent shadow-none hover:bg-white'}
+                    `}
+                  >
                     {link.name}
                   </NavLink>
                 );
@@ -182,7 +117,14 @@ export default function RootLayout() {
         </div>
       </nav>
 
-      {/* Main Content */}
+      {/* Grid Pattern background for the entire app */}
+      <div 
+        className="fixed inset-0 z-[-1] opacity-50"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 40H0V0h1v39h39v1z' fill='%23000' fill-opacity='0.1'/%3E%3C/svg%3E")`
+        }}
+      />
+
       <main className="w-full flex-1">
         <Outlet />
       </main>

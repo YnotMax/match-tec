@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
-import Landing from "./pages/Landing";
+import Bunker from "./pages/Bunker";
 import Onboarding from "./pages/Onboarding";
-import Discover from "./pages/Discover";
+import Guilda from "./pages/Guilda";
+import Oraculo from "./pages/Oraculo";
+import Logistica from "./pages/Logistica";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 
@@ -14,9 +16,11 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<RootLayout />}>
-              <Route index element={<Landing />} />
+              <Route index element={<Bunker />} />
               <Route path="onboarding" element={<Onboarding />} />
-              <Route path="discover" element={<Discover />} />
+              <Route path="guilda" element={<Guilda />} />
+              <Route path="oraculo" element={<Oraculo />} />
+              <Route path="logistica" element={<Logistica />} />
             </Route>
           </Routes>
         </BrowserRouter>
@@ -24,3 +28,4 @@ export default function App() {
     </ErrorBoundary>
   );
 }
+

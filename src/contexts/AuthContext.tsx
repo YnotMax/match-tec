@@ -1,14 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '../lib/firebase';
-import { User, signInWithPopup, GoogleAuthProvider, signOut as firebaseSignOut } from 'firebase/auth';
+import { User, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
-  signInWithGoogle: () => Promise<void>;
-  signOut: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -31,22 +29,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logOut = async () => {
-    await firebaseSignOut(auth);
+    await signOut(auth);
   };
 
   return (
-    <AuthContext.Provider value={{
-      user,
-      loading,
-      signIn,
-      logOut,
-      signInWithGoogle: signIn,
-      signOut: logOut,
-    }}>
+    <AuthContext.Provider value={{ user, loading, signIn, logOut }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
 export const useAuth = () => useContext(AuthContext);
-
