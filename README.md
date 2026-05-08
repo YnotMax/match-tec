@@ -1,41 +1,41 @@
-﻿# Match Tech â€” Encontre sua equipe ideal para hackathons
+# Match Tech — Encontre sua equipe ideal para hackathons
 
-Uma plataforma de matchmaking comunitÃ¡ria que conecta desenvolvedores, designers e entusiastas solitÃ¡rios a equipes complementares â€” baseado em habilidades reais, paixÃµes e vetos, nÃ£o em currÃ­culos genÃ©ricos.
+Uma plataforma de matchmaking comunitária que conecta desenvolvedores, designers e entusiastas solitários a equipes complementares — baseado em habilidades reais, paixões e vetos, não em currículos genéricos.
 
-Nasceu da transformaÃ§Ã£o de um app de gestÃ£o de equipe do [Hackathon Tech Floripa 2026](https://techfloripa.com.br), cujo sistema de mapeamento de perfil individual ficou tÃ£o bom que decidimos abri-lo para toda a comunidade.
+Nasceu da transformação de um app de gestão de equipe do [Hackathon Tech Floripa 2026](https://techfloripa.com.br), cujo sistema de mapeamento de perfil individual ficou tão bom que decidimos abri-lo para toda a comunidade.
 
 ---
 
-## âœ¨ Funcionalidades
+## ✨ Funcionalidades
 
 ### Mapeamento de Perfil Gamificado
-- **Classes:** Selecione sua role principal e secundÃ¡rias (Frontend, Backend, AI/ML, Design, Hardware, etc.)
+- **Classes:** Selecione sua role principal e secundárias (Frontend, Backend, AI/ML, Design, Hardware, etc.)
 - **Skills Radar:** Sliders de 1-10 em 6 categorias, gerando um spider chart em tempo real.
-- **Arsenal de Tags:** Marque tecnologias como â¤ï¸ AMO, âœ… OPERO BEM ou ðŸš« NEM FUDENDO â€” mÃ­nimo de 10 para calibrar o algoritmo.
+- **Arsenal de Tags:** Marque tecnologias como ❤️ AMO, ✅ OPERO BEM ou 🚫 NEM FUDENDO — mínimo de 10 para calibrar o algoritmo.
 
 ### Descoberta de Perfis
 - Explore perfis da comunidade com filtros por role, skill dominante e tags.
 - Cards compactos com preview de radar chart e status de equipe.
 
-### AnÃ¡lise por IA
-- AnÃ¡lise individual de perfil via Google Gemini (tom brutal ou suave).
+### Análise por IA
+- Análise individual de perfil via Google Gemini (tom brutal ou suave).
 - Compatibilidade entre perfis (cruza skills + tags + vetos).
-- AnÃ¡lise de composiÃ§Ã£o de equipe com sugestÃµes de forÃ§as e gaps.
+- Análise de composição de equipe com sugestões de forças e gaps.
 
 ### Sistema de Squads
 - Crie equipes, envie convites e visualize radares sobrepostos de todos os membros.
 
 ---
 
-## ðŸ’» Stack TecnolÃ³gica
+## 💻 Stack Tecnológica
 
 | Camada | Tecnologias |
 |--------|------------|
 | **Frontend** | React 19, TypeScript, Vite |
 | **Estilo** | Tailwind CSS v4 (Dark Mode, SaaS Minimalista) |
-| **AnimaÃ§Ãµes** | `motion/react` |
-| **GrÃ¡ficos** | Recharts (Radar / Spider Charts) |
-| **Ãcones** | Lucide React |
+| **Animações** | `motion/react` |
+| **Gráficos** | Recharts (Radar / Spider Charts) |
+| **Ícones** | Lucide React |
 | **Auth** | Firebase Authentication (Google OAuth) |
 | **Banco de Dados** | Firebase Firestore (NoSQL, Offline-First) |
 | **IA** | Google Gemini SDK (`@google/genai`) |
@@ -44,22 +44,22 @@ Nasceu da transformaÃ§Ã£o de um app de gestÃ£o de equipe do [Hackathon Tec
 
 ---
 
-## ðŸ”§ Como Rodar Localmente
+## 🔧 Como Rodar Localmente
 
-### 1. Clone o repositÃ³rio
+### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/YnotMax/Hackathon-Inicio.git
-cd Hackathon-Inicio
+git clone https://github.com/YnotMax/match-tech.git
+cd match-tech
 ```
 
-### 2. Instale as dependÃªncias
+### 2. Instale as dependências
 
 ```bash
 npm install
 ```
 
-### 3. Configure as variÃ¡veis de ambiente
+### 3. Configure as variáveis de ambiente
 
 Copie o arquivo de exemplo e adicione sua chave da API do Gemini:
 
@@ -75,15 +75,15 @@ GEMINI_API_KEY="SUA-CHAVE-AQUI"
 
 ### 4. Configure o Firebase (opcional)
 
-**OpÃ§Ã£o A â€” Usar config existente:**
-O projeto jÃ¡ inclui `firebase-applet-config.json` com um projeto Firebase hospedado. Nenhuma configuraÃ§Ã£o extra necessÃ¡ria.
+**Opção A — Usar config existente:**
+O projeto já inclui `firebase-applet-config.json` com um projeto Firebase hospedado. Nenhuma configuração extra necessária.
 
-**OpÃ§Ã£o B â€” Usar seu prÃ³prio Firebase:**
+**Opção B — Usar seu próprio Firebase:**
 
 1. Crie um projeto em [console.firebase.google.com](https://console.firebase.google.com).
 2. Em Firestore Database, **crie um banco de dados**.
 3. Em Authentication, habilite o provider **Google**.
-4. Crie um app Web nas configuraÃ§Ãµes do projeto.
+4. Crie um app Web nas configurações do projeto.
 5. Copie as chaves para `firebase-applet-config.json`:
 
 ```json
@@ -98,7 +98,7 @@ O projeto jÃ¡ inclui `firebase-applet-config.json` com um projeto Firebase hos
 }
 ```
 
-6. Aplique as regras de seguranÃ§a do arquivo `firestore.rules` no console do Firestore.
+6. Aplique as regras de segurança do arquivo `firestore.rules` no console do Firestore.
 
 ### 5. Inicie o servidor dev
 
@@ -106,30 +106,29 @@ O projeto jÃ¡ inclui `firebase-applet-config.json` com um projeto Firebase hos
 npm run dev
 ```
 
-O app estarÃ¡ rodando em `http://localhost:3000`.
+O app estará rodando em `http://localhost:3000`.
 
 ---
 
-## ðŸ“ DocumentaÃ§Ã£o do Projeto
+## 📁 Documentação do Projeto
 
-| Documento | PropÃ³sito |
+| Documento | Propósito |
 |-----------|-----------|
-| `VISION_Match Tech.md` | VisÃ£o do produto, identidade visual, arquitetura, modelo de dados |
-| `FRONTEND_BLUEPRINT.md` | Blueprint tÃ©cnico de implementaÃ§Ã£o (o que manter, modificar, criar) |
-| `TODO_Match Tech.md` | Roadmap com checklist de progresso |
-| `CODEBASE_MAP.md` | Mapa rÃ¡pido de toda a codebase (arquivos, dependÃªncias, funÃ§Ãµes-chave) |
+| `VISION_MATCH_TECH.md` | Visão do produto, identidade visual, arquitetura, modelo de dados |
+| `FRONTEND_BLUEPRINT.md` | Blueprint técnico de implementação (o que manter, modificar, criar) |
+| `TODO_MATCH_TECH.md` | Roadmap com checklist de progresso |
+| `CODEBASE_MAP.md` | Mapa rápido de toda a codebase (arquivos, dependências, funções-chave) |
 
 ---
 
-## ðŸ”’ SeguranÃ§a
+## 🔒 Segurança
 
-O Firestore utiliza regras de seguranÃ§a com validaÃ§Ã£o de schema (`isValidMember`), verificaÃ§Ã£o de `request.auth.uid` e controle de campos alterÃ¡veis. Veja `firestore.rules` para detalhes.
+O Firestore utiliza regras de segurança com validação de schema (`isValidMember`), verificação de `request.auth.uid` e controle de campos alteráveis. Veja `firestore.rules` para detalhes.
 
 ---
 
-## ðŸ“œ LicenÃ§a
+## 📜 Licença
 
 Projeto open-source criado para a comunidade do Hackathon Tech Floripa 2026.
 
-Feito com â˜• por **Tony Max & Squad**.
-
+Feito com ☕ por **Tony Max & Squad**.
