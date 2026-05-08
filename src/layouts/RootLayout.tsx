@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
-import { Terminal, User as UserIcon, Menu, X } from "lucide-react";
+import { Zap, User as UserIcon, Menu, X } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function RootLayout() {
@@ -14,11 +14,8 @@ export default function RootLayout() {
   }, [location.pathname]);
 
   const links = [
-    { name: "O BUNKER", path: "/" },
     { name: "ONBOARDING", path: "/onboarding" },
     { name: "A GUILDA", path: "/guilda" },
-    { name: "ORÁCULO", path: "/oraculo" },
-    { name: "LOGÍSTICA", path: "/logistica" },
   ];
 
   const getHighResPhotoUrl = (url: string | null) => {
@@ -36,8 +33,8 @@ export default function RootLayout() {
         <div className="max-w-7xl mx-auto p-4 px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-               <div className="bg-neo-black p-2"><Terminal className="text-neo-lime w-6 h-6" /></div>
-               <span className="font-heading font-black text-2xl uppercase tracking-tighter">CMD_BUNKER</span>
+               <div className="bg-neo-black p-2"><Zap className="text-neo-lime w-6 h-6" /></div>
+               <NavLink to="/" className="font-heading font-black text-2xl uppercase tracking-tighter hover:text-neo-pink transition-colors">MATCH_TECH</NavLink>
             </div>
             
             {/* Desktop Navigation */}
